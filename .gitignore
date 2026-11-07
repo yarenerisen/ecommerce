@@ -53,3 +53,6 @@ Thumbs.db
 src/main/resources/application.propertiessrc/main/resources/application.properties
 src/main/resources/application.properties
 target/
+
+# Claude Code yerel ayarlari
+.claude/

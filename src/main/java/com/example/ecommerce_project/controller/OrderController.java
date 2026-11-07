@@ -24,23 +24,6 @@ public class OrderController {
     private final OrderService orderService;
     private final com.example.ecommerce_project.repository.UserRepository userRepository;
 
-    @GetMapping("/debug/users")
-    public List<com.example.ecommerce_project.entity.User> dumpUsers() {
-        return userRepository.findAll();
-    }
-
-    @GetMapping("/debug/delete-ghosts")
-    @org.springframework.transaction.annotation.Transactional
-    public String deleteGhosts(@org.springframework.beans.factory.annotation.Autowired com.example.ecommerce_project.repository.OrderRepository orderRepository, @org.springframework.beans.factory.annotation.Autowired com.example.ecommerce_project.repository.OrderItemRepository orderItemRepository) {
-        List<Order> orders = orderRepository.findAll().stream().filter(o -> o.getInvoiceNo() != null && (o.getInvoiceNo() == 946182 || o.getInvoiceNo() == 992262)).toList();
-        for (Order o : orders) {
-            List<com.example.ecommerce_project.entity.OrderItem> items = orderItemRepository.findByOrderId(o.getId());
-            orderItemRepository.deleteAll(items);
-            orderRepository.delete(o);
-        }
-        return "Deleted " + orders.size() + " ghost orders.";
-    }
-
     private final com.example.ecommerce_project.repository.StoreRepository storeRepository;
 
     public OrderController(OrderService orderService, com.example.ecommerce_project.repository.UserRepository userRepository, com.example.ecommerce_project.repository.StoreRepository storeRepository) {

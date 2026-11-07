@@ -1,0 +1,18 @@
+# Bu dosyayi ayni klasore "application.properties" adiyla kopyalayin.
+# application.properties .gitignore'dadir; gercek anahtarlari yalnizca oraya yazin.
+
+# Frontend API adresi olarak 8081'i bekler.
+server.port=8081
+
+# Veritabani ayarlari application-mysql.properties dosyasindan gelir.
+spring.profiles.active=mysql
+
+# Zorunlu: bu iki anahtar tanimli degilse backend acilmaz.
+# Sahte deger verilirse uygulama acilir, ancak odeme ve chatbot calismaz.
+# Stripe test anahtari: https://dashboard.stripe.com/test/apikeys
+stripe.api.key=sk_test_your_key_here
+# Gemini anahtari: https://aistudio.google.com
+gemini.api.key=your_gemini_key_here
+
+# En az 32 karakter olmali. ai-agent/.env icindeki JWT_SECRET ile ayni olmali.
+app.jwt.secret=change-me-to-a-random-secret-of-32-plus-chars
